@@ -18,6 +18,16 @@ Multi-language stack for **2D circular hard-wall electron corral** simulations: 
 
 ---
 
+## Live front end (GitHub Pages)
+
+The interactive corral viewer lives at https://ahmadaliparr.github.io/quantum-corral/ and ships in this repo under `docs/`.
+
+It shows the same density field two ways: a 3D height map (density as height, STM-style colormap, 48 golden atom spikes on the rim) and a 2D top-down view (dark disk, gold rim dots, glowing blue interference rings). Sliders set the two mode amplitudes (a1, a2), the relative phase, and the time evolution, and the page recomputes the density from the Bessel model. The default field is the real Fortran simulator output (a1 0.99, a2 0.81, phase 190), not a sketch.
+
+The page is a single self-contained file (`docs/index.html`, no external requests). The grid behind it is in `docs/corral_data.json`, with the full provenance in `docs/DATA_PROVENANCE.md`. It is an ideal hard-wall continuum model in dimensionless units (R = m* = ħ = 1), not a calibrated Cu(111)/Fe-adatom surface-state corral.
+
+---
+
 ## Repository layout
 
 ```
@@ -25,6 +35,10 @@ quantum-corral/
 ├── LICENSE / LICENSE.FSL          Dual BSL-1.0 + FSL-1.1-MIT (competing use waived)
 ├── Makefile                       C11 build: tinyaplc, ABI + e2e verification
 ├── README.md
+├── docs/                          GitHub Pages front end
+│   ├── index.html                 Self-contained interactive viewer (3D + 2D)
+│   ├── corral_data.json           Real Fortran density grid behind the page
+│   └── DATA_PROVENANCE.md         Data source, model, and test results
 │
 ├── wolfram/                       Symbolic Dirichlet modes, grid export
 │   ├── CorralOperators.wl         Modes, wavefunction, CorralGrid, JSON/WXF export
